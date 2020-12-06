@@ -6,7 +6,7 @@
   >
     Go Back
   </span>
-  <button (click)="shuffleSongs()" class="btn normal-btn w-25 mr-3">
+  <button (click)="shuffleSongs()" [disabled]="!songs?.length" class="btn normal-btn w-25 mr-3">
     Shuffle Play
   </button>
   <button (click)="addSongs()" class="btn purple-btn w-25 btn">
