@@ -29,6 +29,9 @@ export class AllSongsComponent implements OnInit, AfterViewChecked {
     this.tempSongList = this.songs;
   }
 
+  /**
+   * Function to filer songs based onthe search value
+   */
   filterSongs(searchText): void {
     if (searchText) {
       this.tempSongList = [];
@@ -42,6 +45,10 @@ export class AllSongsComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  /**
+   * Function to emit selected song to add to the playlist
+   * @param song - selected song
+   */
   addSongToList(song): void {
     this.addSong.emit(song);
   }

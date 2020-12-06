@@ -29,18 +29,31 @@ export class EditPlaylistHomeComponent implements OnInit, AfterViewChecked {
     this.songs = this.sharedDataService.selectedPlaylist.songs;
   }
 
+  /**
+   * Function to navigate to add songs screen
+   */
   addSongs(): void {
     this.router.navigate([Constants.ROUTES.playlist, Constants.ROUTES.editPlaylist, Constants.ROUTES.addSongsPlaylists]);
   }
 
+  /**
+   * Function to delete a song from the playlist
+   */
   deleteSongFromList(index): void {
     this.songs.splice(index, 1);
+    sessionStorage.setItem('playlists', JSON.stringify(this.sharedDataService.playlists));
   }
 
+  /**
+   * Function to go back to the previous screen
+   */
   back(): void {
     this.router.navigate([Constants.ROUTES.playlist]);
   }
 
+  /**
+   * Function to shuffle songs in the playlist
+   */
   shuffleSongs(): void {
     let ctr = this.songs.length;
     let temp;

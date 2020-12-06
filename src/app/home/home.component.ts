@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Constants } from '../constants/constants';
 import { SharedDataService } from '../shared-service/shared-data.service';
-import { SongDetails } from './music-details';
+import { PlayListDetails, SongDetails } from './music-details';
 import { MusicService } from './music.service';
 
 @Component({
@@ -34,6 +34,17 @@ export class HomeComponent implements OnInit, AfterViewChecked {
    * Function to populate Songs
    */
   public populateSongs(): void {
+    this.setValuesFromSession();
+    const songsList = sessionStorage.getItem('songsList');
+    if (songsList) {
+      (JSON.parse(songsList) || []).forEach(song => {
+        this.sharedDataService.songs.push(new SongDetails(song));
+      });
+      if (window.location.pathname === '') {
+        this.tabChanged(this.tabId, true);
+      }
+      return;
+    }
     forkJoin({
       users: this.musicService.getUserList(),
       albums: this.musicService.getAlbumsList(),
@@ -50,14 +61,37 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       (songs || []).forEach(song => {
         this.sharedDataService.songs.push(new SongDetails(song, albumObj[song.albumId]));
       });
-      this.tabChanged(this.tabId, true)
+      sessionStorage.setItem('songsList', JSON.stringify(this.sharedDataService.songs));
+      this.tabChanged(this.tabId, true);
     });
+  }
+
+  /**
+   * Function to populate Values from session storage
+   */
+  public setValuesFromSession(): void {
+    const tabId = sessionStorage.getItem('tabId');
+    const playlists = sessionStorage.getItem('playlists');
+    const selectedPlaylist = sessionStorage.getItem('selectedPlaylist');
+    if (playlists) {
+      (JSON.parse(playlists) || []).forEach(playlist => {
+        this.sharedDataService.playlists.push(new PlayListDetails(playlist));
+      });
+    }
+    if (selectedPlaylist) {
+      this.sharedDataService.selectedPlaylist = new PlayListDetails(JSON.parse(playlists));
+    }
+    if (tabId) {
+      this.tabId = Number(tabId) || 1;
+    }
+
   }
 
   /**
    * Function triggered on tapping the tab
    */
   public tabChanged(id, onLoad = false): void {
+    sessionStorage.setItem('tabId', String(this.tabId));
     if ((id !== this.tabId || onLoad) && this.sharedDataService.songs.length) {
       this.tabId = id;
       if (id === 1) {

@@ -22,13 +22,20 @@ export class PlaylistAddSongsComponent implements OnInit {
     (this.sharedDataService.selectedPlaylist.songs || []).forEach(song => this.songsObj[song.id] = song);
   }
 
+  /**
+   * Function to add song to the playlist
+   */
   addSongToPlaylist(song: any = {}): void {
     if (song.id) {
       this.songsObj[song.id] = song;
       this.sharedDataService.selectedPlaylist.songs.push(song);
+      sessionStorage.setItem('selectedPlaylist', JSON.stringify(this.sharedDataService.selectedPlaylist));
     }
   }
 
+  /**
+   * Function togo back to the previous screen
+   */
   back(): void {
     this.router.navigate([Constants.ROUTES.playlist, Constants.ROUTES.editPlaylist]);
   }

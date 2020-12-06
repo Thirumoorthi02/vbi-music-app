@@ -29,10 +29,16 @@ export class SongsListComponent implements OnInit, AfterViewChecked {
     this.setTempSongs();
   }
 
+  /**
+   * Function to temp songs needed to populte songs in the list
+   */
   setTempSongs(): void {
     this.tempSongList = this.songs.slice(0, 50);
   }
 
+  /**
+   * Function for lazy loading for performance enhancement
+   */
   lazyLoading(event): void {
     const previousListLength = this.tempSongList.length;
     if (Math.ceil(event.target.offsetHeight + event.target.scrollTop) >= Math.ceil(event.target.scrollHeight)) {
@@ -40,10 +46,20 @@ export class SongsListComponent implements OnInit, AfterViewChecked {
     }
   }
 
+
+  /**
+   * Function to emit selected song to add to the playlist
+   * @param song - selected song
+   */
   addSongToList(song): void {
     this.addSong.emit(song);
   }
 
+
+  /**
+   * Function to emit selected song to delete from the playlist
+   * @param song - selected song
+   */
   deleteSongFromList(index): void {
     this.deleteSong.emit(index);
   }

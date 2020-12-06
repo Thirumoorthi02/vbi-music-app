@@ -9,7 +9,7 @@ export class SongDetails {
     constructor(song: any = {}, albumObj: any = {}) {
         this.albumName = song.albumName || albumObj.albumName || '';
         this.artist = song.artist || albumObj.artist || '';
-        this.songName = song.title || '';
+        this.songName = song.songName || song.title || '';
         this.thumbnailUrl = song.thumbnailUrl || '';
         this.id = Number(song.id) || 0;
     }
