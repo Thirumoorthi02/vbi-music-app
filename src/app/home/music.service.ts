@@ -14,20 +14,20 @@ export class MusicService {
    * Function to get songs list
    */
   public getSongsList(): Observable<any> {
-    return this.http.get(Constants.API_URLS.getAllSongs);
+    return this.http.get('./../assets/songs.json');
   }
 
   /**
    * Function to get all albums list
    */
   public getAlbumsList(): Observable<any> {
-    return this.http.get(Constants.API_URLS.getAlbums);
+    return this.http.get('./../assets/albums.json');
   }
 
   /**
    * Function to get all albums list
    */
   public getUserList(): Observable<any> {
-    return this.http.get(Constants.API_URLS.getUsersList);
+    return this.http.get('./../assets/users.json');
   }
 }
