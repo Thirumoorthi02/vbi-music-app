@@ -9,6 +9,7 @@ export class SharedDataService {
   public songs: Array<SongDetails> = [];
   public playlists: Array<PlayListDetails> = [];
   public selectedPlaylist: PlayListDetails;
+  public showBackOption = false;
 
   constructor() { }
 }

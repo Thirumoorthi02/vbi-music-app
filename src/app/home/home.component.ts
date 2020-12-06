@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
     public sharedDataService: SharedDataService,
     public musicService: MusicService,
     public router: Router,
-    public cd: ChangeDetectorRef
+    public cd: ChangeDetectorRef,
+    public location: Location
   ) { }
 
   ngOnInit(): void {
@@ -100,6 +102,13 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.router.navigate([Constants.ROUTES.playlist]);
       }
     }
+  }
+
+  /**
+   * Function to go back to the previous url
+   */
+  public goBack(): void {
+    this.location.back()
   }
 
 }

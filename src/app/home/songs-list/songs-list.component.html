@@ -9,9 +9,9 @@
     *ngFor="let song of tempSongList; let i = index"
   >
     <div class="col-lg-6 px-0 col-12 py-3">
-      <div class="song-name font-18">{{ song?.songName }}</div>
-      <div class="artist-name font-16">{{ song?.artist }}</div>
-      <div class="album-name font-16">{{ song?.albumName }}</div>
+      <div class="song-name font-18 text-overflow-ellipses">{{ song?.songName }}</div>
+      <div class="artist-name font-16 text-overflow-ellipses">{{ song?.artist }}</div>
+      <div class="album-name font-16 text-overflow-ellipses">{{ song?.albumName }}</div>
     </div>
     <div
       class="px-0"

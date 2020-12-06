@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background: rgb(240, 237, 237) !important;
+  // background: linear-gradient(30deg,rgba(57,106,255,1) 29%,rgba(18,205,114,1) 100%) !important;
+  background: linear-gradient(30deg,rgb(15, 155, 211) 29%,rgb(3, 139, 74) 100%) !important;
 }
 
 .scroll-content::-webkit-scrollbar {
@@ -15,7 +16,7 @@ body {
 .scroll-content::-webkit-scrollbar-thumb {
   border-radius: 0.625rem;
   height: 0.75rem;
-  background: #cccccc;
+  background: rgb(38, 103, 129);
 }
 
 @media (min-width:992px) {
@@ -31,7 +32,7 @@ body {
   .scroll-content-lg::-webkit-scrollbar-thumb {
     border-radius: 0.625rem !important;
     height: 0.75rem !important;
-    background: #cccccc !important;
+    background: rgb(38, 103, 129) !important;
   }
 
   .w-lg-25 {

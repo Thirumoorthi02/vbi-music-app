@@ -7,13 +7,17 @@
   >
     <div
       (click)="editPlaylist(playlist)"
-      class="card w-100 p-lg-3 py-3 flex-row mb-3 cursor-pointer"
-      *ngFor="let playlist of sharedDataService?.playlists"
+      class="card w-100 p-lg-3 py-3 flex-row mb-3 cursor-pointer {{
+        'bg-color-' + (i % 4)
+      }}"
+      *ngFor="let playlist of sharedDataService?.playlists; let i = index"
     >
       <div class="col-4 font-18">{{ playlist?.playlistName }}</div>
-      <div class="col-8 font-16">Created on: &nbsp;&nbsp;{{ playlist?.createdDate }}</div>
+      <div class="col-8 font-16">
+        Created on: &nbsp;&nbsp;{{ playlist?.createdDate }}
+      </div>
     </div>
-  </div> 
+  </div>
   <div
     #btnContainer
     class="playlist-btn-container text-center col-lg-5 col-8 mx-auto py-3"

@@ -1,21 +1,44 @@
 <div class="home overflow-hidden">
-  <div #header class="col-lg-6 mx-auto col-8 px-0 row pt-4 pb-2">
-    <div
-      class="col-6 text-center py-3 title cursor-pointer"
-      (click)="tabChanged(1)"
-      [class.active]="tabId === 1"
-    >
-      All Songs
+  <div #header>
+    <img
+      class="back-icon cursor-pointer"
+      *ngIf="sharedDataService.showBackOption"
+      src="./../../assets/arrow-back.svg"
+      (click)="goBack()"
+      alt="go back"
+    />
+    <img
+      class="vbi-music-icon p-3"
+      alt="🎻"
+      aria-label="🎻"
+      src="https://notion-emojis.s3-us-west-2.amazonaws.com/v0/svg-twitter/1f3bb.svg"
+    />
+    <div class="d-flex justify-content-center align-items-center pt-3 pb-2">
+      <img
+        class="vbi-music-icon-1"
+        alt="🎻"
+        aria-label="🎻"
+        src="https://notion-emojis.s3-us-west-2.amazonaws.com/v0/svg-twitter/1f3bb.svg"
+      />
+      <span class="brand-header pl-2 font-22 font-weight-bold">VBI Music</span>
     </div>
-    <div
-      class="col-6 text-center py-3 title cursor-pointer"
-      (click)="tabChanged(2)"
-      [class.active]="tabId === 2"
-    >
-      Playlists
+    <div class="col-lg-6 mx-auto col-8 px-0 row pt-2 pb-2">
+      <div
+        class="col-6 text-center py-3 title cursor-pointer"
+        (click)="tabChanged(1)"
+        [class.active]="tabId === 1"
+      >
+        All Songs
+      </div>
+      <div
+        class="col-6 text-center py-3 title cursor-pointer"
+        (click)="tabChanged(2)"
+        [class.active]="tabId === 2"
+      >
+        Playlists
+      </div>
     </div>
   </div>
-
   <div
     [ngStyle]="{ height: 'calc(100% - ' + header?.clientHeight + 'px)' }"
     class="overflow-y-auto"

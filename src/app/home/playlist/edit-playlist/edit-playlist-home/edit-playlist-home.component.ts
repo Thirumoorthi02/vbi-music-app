@@ -41,6 +41,7 @@ export class EditPlaylistHomeComponent implements OnInit, AfterViewChecked {
    */
   deleteSongFromList(index): void {
     this.songs.splice(index, 1);
+    this.songsListComponent.setTempSongs();
     sessionStorage.setItem('playlists', JSON.stringify(this.sharedDataService.playlists));
   }
 
