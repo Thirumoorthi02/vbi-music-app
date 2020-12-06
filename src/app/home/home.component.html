@@ -1,0 +1,27 @@
+<div class="home overflow-hidden">
+  <div #header class="col-lg-6 mx-auto col-8 px-0 row pt-4 pb-2">
+    <div
+      class="col-6 text-center py-3 title cursor-pointer"
+      (click)="tabChanged(1)"
+      [class.active]="tabId === 1"
+    >
+      All Songs
+    </div>
+    <div
+      class="col-6 text-center py-3 title cursor-pointer"
+      (click)="tabChanged(2)"
+      [class.active]="tabId === 2"
+    >
+      Playlists
+    </div>
+  </div>
+
+  <div
+    [ngStyle]="{ height: 'calc(100% - ' + header?.clientHeight + 'px)' }"
+    class="overflow-auto"
+  >
+    <ng-container *ngIf="sharedDataService?.songs?.length">
+      <router-outlet></router-outlet>
+    </ng-container>
+  </div>
+</div>

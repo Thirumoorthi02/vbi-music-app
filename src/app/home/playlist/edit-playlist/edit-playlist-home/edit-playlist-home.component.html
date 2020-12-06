@@ -1,0 +1,28 @@
+<div class="text-right py-2 px-5" #btnsContainer>
+  <span
+    #returnLink
+    (click)="back()"
+    class="text-underline text-right purple-text float-left cursor-pointer font-18"
+  >
+    Go Back
+  </span>
+  <button (click)="shuffleSongs()" class="btn normal-btn w-25 mr-3">
+    Shuffle Play
+  </button>
+  <button (click)="addSongs()" class="btn purple-btn w-25 btn">
+    + Add Song
+  </button>
+</div>
+<div
+  [ngStyle]="{
+    height: 'calc(100% - ' + btnsContainer?.clientHeight + 'px)'
+  }"
+  class="overflow-hidden"
+>
+  <app-songs-list
+    #songsListComponent
+    [songs]="songs"
+    [showDeleteLink]="true"
+    (deleteSong)="deleteSongFromList($event)"
+  ></app-songs-list>
+</div>

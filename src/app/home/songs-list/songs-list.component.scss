@@ -1,0 +1,73 @@
+.album-img {
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+.song-name {
+  font-weight: bold;
+}
+
+.artist-name {
+  font-style: italic;
+}
+
+.album-name {
+  font-style: oblique;
+  font-weight: 600;
+}
+
+.bg-color-0 {
+  background-color: yellowgreen;
+  color: whitesmoke;
+}
+
+.bg-color-1 {
+  background-color: rgb(223, 160, 23);
+  color: rgb(248, 230, 230);
+}
+
+.bg-color-2 {
+  background-color: rgb(25, 182, 135);
+  color: rgb(247, 234, 234);
+}
+
+.bg-color-3 {
+  background-color: rgb(233, 76, 76);
+  color: rgb(230, 223, 223);
+}
+
+.bg-color-4 {
+  background-color: rgb(12, 143, 56);
+  color: rgb(216, 206, 206);
+}
+
+.bg-color-5 {
+  background-color: rgb(1, 34, 10);
+  color: rgb(250, 248, 248);
+}
+
+.bg-color-6 {
+  background-color: rgb(211, 230, 218);
+  color: rgb(22, 16, 16);
+}
+
+.bg-color-7 {
+  background-color: rgb(58, 67, 202);
+  color: rgb(226, 208, 208);
+}
+
+.song-card:hover {
+  transform: translateY(-.4rem);
+  box-shadow: 0 0.1rem 1rem green;
+  background-color: rgb(2, 94, 2);
+  color: rgb(231, 228, 228);
+  border: 1px green solid;
+
+  .font-italic {
+    color: rgb(13, 13, 211);
+  }
+
+  .added-text{
+    color:rgb(204, 248, 8)
+  }
+}

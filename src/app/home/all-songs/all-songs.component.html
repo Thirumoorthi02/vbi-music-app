@@ -1,0 +1,24 @@
+<div class="p-3 h-100 overflow-hidden">
+  <div #searchInputContainer class="p-3">
+    <input
+      type="text"
+      placeholder="Search Songs..."
+      class="form-control"
+      [(ngModel)]="searchText"
+      (ngModelChange)="filterSongs($event)"
+    />
+  </div>
+  <div
+    [ngStyle]="{
+      height: 'calc(100% - ' + searchInputContainer?.clientHeight + 'px)'
+    }"
+    class="overflow-hidden"
+  >
+    <app-songs-list
+      [songs]="tempSongList"
+      [showAddLink]="showAddLink"
+      [songsObj]="songsObj"
+      (addSong)="addSongToList($event)"
+    ></app-songs-list>
+  </div>
+</div>

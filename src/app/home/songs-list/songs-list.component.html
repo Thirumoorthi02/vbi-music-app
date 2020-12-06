@@ -1,0 +1,47 @@
+<div
+  class="px-5 py-3 overflow-overlay scroll-content h-100"
+  (scroll)="lazyLoading($event)"
+>
+  <div
+    class="card w-100 py-3 px-5 song-card flex-row mb-3 cursor-default justify-content-between {{
+      'bg-color-' + ((song?.id || 0) % 8)
+    }} align-items-center flex-wrap"
+    *ngFor="let song of tempSongList; let i = index"
+  >
+    <div class="col-lg-6 px-lg-0 col-12 py-3">
+      <div class="song-name font-18">{{ song?.songName }}</div>
+      <div class="artist-name font-16">{{ song?.artist }}</div>
+      <div class="album-name font-16">{{ song?.albumName }}</div>
+    </div>
+    <div
+      class="px-lg-0"
+      [ngClass]="
+        showAddLink || showDeleteLink ? 'col-lg-4 col-6 text-lg-center' : 'col-6 text-lg-right'
+      "
+    >
+      Play Time - {{ song?.playTime }}
+    </div>
+    <div *ngIf="showAddLink" class="col-lg-2 col-6 text-lg-center">
+      <u
+        class="font-italic font-18 cursor-pointer"
+        (click)="addSongToList(song)"
+        *ngIf="!songsObj[song.id]"
+      >
+        + Add to list
+      </u>
+      <span
+        class="font-weight-bold font-italic font-18 added-text"
+        *ngIf="songsObj[song.id]"
+        >Added</span
+      >
+    </div>
+    <div *ngIf="showDeleteLink" class="col-lg-2 col-6 text-lg-center">
+      <u
+        class="font-italic font-18 cursor-pointer"
+        (click)="deleteSongFromList(i)"
+      >
+        Delete
+      </u>
+    </div>
+  </div>
+</div>

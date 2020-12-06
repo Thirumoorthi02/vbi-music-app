@@ -1,0 +1,12 @@
+.home {
+  height: 100vh;
+
+  .title {
+    border: 0.0625rem grey solid;
+  }
+
+  .active {
+    background: green;
+    color: white;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="h-100 overflow-hidden p-3">
+  <div class="header py-4 font-weight-bold font-22" #playlistHeader>
+    {{ sharedDataService?.selectedPlaylist?.playlistName }}
+  </div>
+  <div
+    class="overflow-hidden"
+    [ngStyle]="{
+      height: 'calc(100% - ' + playlistHeader?.clientHeight + 'px)'
+    }"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>
