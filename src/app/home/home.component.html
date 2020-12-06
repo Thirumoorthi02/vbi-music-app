@@ -18,7 +18,7 @@
 
   <div
     [ngStyle]="{ height: 'calc(100% - ' + header?.clientHeight + 'px)' }"
-    class="overflow-auto"
+    class="overflow-y-auto"
   >
     <ng-container *ngIf="sharedDataService?.songs?.length">
       <router-outlet></router-outlet>

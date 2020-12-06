@@ -39,16 +39,21 @@ body {
   }
 }
 
-.overflow-auto {
+.w-33 {
+  width: 33% !important;
+}
+
+.overflow-y-auto {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: auto;
 }
 
-.overflow-overlay {
-  overflow: overlay;
+.overflow-y-overlay {
+  overflow-y: overlay;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: auto;
+  overflow-x: hidden;
 }
 
 .font-18 {

@@ -34,17 +34,17 @@ export class HomeComponent implements OnInit, AfterViewChecked {
    * Function to populate Songs
    */
   public populateSongs(): void {
-    this.setValuesFromSession();
-    const songsList = sessionStorage.getItem('songsList');
-    if (songsList) {
-      (JSON.parse(songsList) || []).forEach(song => {
-        this.sharedDataService.songs.push(new SongDetails(song));
-      });
-      if (window.location.pathname === '') {
-        this.tabChanged(this.tabId, true);
-      }
-      return;
-    }
+    // this.setValuesFromSession();
+    // const songsList = sessionStorage.getItem('songsList');
+    // if (songsList) {
+    //   (JSON.parse(songsList) || []).forEach(song => {
+    //     this.sharedDataService.songs.push(new SongDetails(song));
+    //   });
+    //   if (window.location.pathname === '') {
+    //     this.tabChanged(this.tabId, true);
+    //   }
+    //   return;
+    // }
     forkJoin({
       users: this.musicService.getUserList(),
       albums: this.musicService.getAlbumsList(),
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
         this.sharedDataService.songs.push(new SongDetails(song, albumObj[song.albumId]));
       });
       sessionStorage.setItem('songsList', JSON.stringify(this.sharedDataService.songs));
-      this.tabChanged(this.tabId, true);
+      this.tabChanged(1, true);
     });
   }
 
